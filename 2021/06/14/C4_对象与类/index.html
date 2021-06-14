@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"coconut443.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第四章 对象与类4.1 面向对象程序设计概述 4.1.1 类实现封装的关键在于$绝对不能$让类中的方法直接地访问其他类的实例域。想要使用OOP，一定要清楚对象的三个主要特性：  对象的行为——可以对对象施加哪些操作或方法 对象的状态——施加那些方法时，对象如何响应 对象标识——如何辨别具有相同行为与状态的不同对象如果不经过方法调用就可以改变对象状态，只能说明封装性遭到了破坏。4.1.4 类之间的关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lito的博客">
+<meta property="og:url" content="http://coconut443.github.io/2021/06/14/C4_%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/index.html">
+<meta property="og:site_name" content="Lito的博客">
+<meta property="og:description" content="第四章 对象与类4.1 面向对象程序设计概述 4.1.1 类实现封装的关键在于$绝对不能$让类中的方法直接地访问其他类的实例域。想要使用OOP，一定要清楚对象的三个主要特性：  对象的行为——可以对对象施加哪些操作或方法 对象的状态——施加那些方法时，对象如何响应 对象标识——如何辨别具有相同行为与状态的不同对象如果不经过方法调用就可以改变对象状态，只能说明封装性遭到了破坏。4.1.4 类之间的关">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-14T14:07:04.157Z">
+<meta property="article:modified_time" content="2021-05-29T01:49:18.390Z">
+<meta property="article:author" content="Lito">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://coconut443.github.io/2021/06/14/C4_%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Lito的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lito的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少有人走的路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://coconut443.github.io/2021/06/14/C4_%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lito">
+      <meta itemprop="description" content="。。。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lito的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-14 22:07:04" itemprop="dateCreated datePublished" datetime="2021-06-14T22:07:04+08:00">2021-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-29 09:49:18" itemprop="dateModified" datetime="2021-05-29T09:49:18+08:00">2021-05-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="第四章-对象与类"><a href="#第四章-对象与类" class="headerlink" title="第四章 对象与类"></a>第四章 对象与类</h1><h2 id="4-1-面向对象程序设计概述"><a href="#4-1-面向对象程序设计概述" class="headerlink" title="4.1 面向对象程序设计概述"></a>4.1 面向对象程序设计概述</h2><blockquote>
+<h3 id="4-1-1-类"><a href="#4-1-1-类" class="headerlink" title="4.1.1 类"></a>4.1.1 类</h3><p>实现封装的关键在于$绝对不能$让类中的方法直接地访问其他类的实例域。<br>想要使用OOP，一定要清楚对象的三个主要特性：</p>
+<ul>
+<li>对象的行为——可以对对象施加哪些操作或方法</li>
+<li>对象的状态——施加那些方法时，对象如何响应</li>
+<li>对象标识——如何辨别具有相同行为与状态的不同对象<br>如果不经过方法调用就可以改变对象状态，只能说明封装性遭到了破坏。<h3 id="4-1-4-类之间的关系"><a href="#4-1-4-类之间的关系" class="headerlink" title="4.1.4 类之间的关系"></a>4.1.4 类之间的关系</h3>依赖关系：一个类的方法操纵另一个类的对象。应该尽可能地将相互依赖的类减至最少。让类之间耦合度最小。<br>聚合关系（关联关系）：A的对象包含B的对象。<br>继承关系：特殊与一般的关系。  <h2 id="4-2-使用预定义类"><a href="#4-2-使用预定义类" class="headerlink" title="4.2 使用预定义类"></a>4.2 使用预定义类</h2></li>
+</ul>
+<ol>
+<li>对象变量和对象的区别<br><code>Date dealine;</code><br>是一个对象变量，但是没有引用对象。要先初始化。<br><code>deadline = new Date();</code>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date deadline = new Date();</span><br></pre></td></tr></table></figure>
+new Date()是构造了一个Date类型的对象，并且他的值是对创建对象的引用。  </li>
+<li>这里提到了一个静态工厂方法。暂时没有详细解释。</li>
+</ol>
+<hr>
+<h3 id="4-2-3-更改器方法与访问器方法"><a href="#4-2-3-更改器方法与访问器方法" class="headerlink" title="4.2.3 更改器方法与访问器方法"></a>4.2.3 更改器方法与访问器方法</h3><ol>
+<li> <code>LocalDate aThousandDaysLater = newYearEve.plusDays(1000);</code> 这个方法调用后，newYearsEve不会改为1000天之后的日期。而会生成一个新的LocalDate对象，把这个新的对象赋予aThousandDaysKater。  </li>
+<li>只访问对象而不修改对象的方法有时称为访问器方法。修改对象的方法称为更改器方法。  </li>
+<li>在C++中，带有const的方法是访问器方法，默认为更改器方法。  </li>
+</ol>
+<hr>
+<h2 id="4-3-用户自定义类"><a href="#4-3-用户自定义类" class="headerlink" title="4.3 用户自定义类"></a>4.3 用户自定义类</h2><p>创建的java文件名必须和public类的名字相匹配。一个源文件中，只能由一个公有类，但可以有任意数目的非公有类。一个文件中可以只有非public类，如果只有一个非public类，此类可以跟文件名不同。<br>每个编译单元（文件）都只能有一个public类，这表示，每个编译单元都有单一的公共接口，用public类来表现。该接口可以按要求包含众多的支持包访问权限的类。如果在某个编译单元内有一个以上的public类，编译器就会给出错误信息。<br>public类的名称必需完全与含有该编译单元的文件名相同。不同将会编译错误。当编译单元完全不带public类也行，且可以对文件随意命名。<br>一个编译单元可以存在多个类，编译时产生多个.class文件，.class文件是程序运行的数据来源。java将public类作为每个编译单元的数据接口，只能有一个。不然不能处理存在多个类的java文件。当一个编译单元有多个非public类时，运行时需要对数据来源进行选择。<br>一个文件也叫一个编译单元。只有一个public类表示每个编译单元都只有一个单一的公共接口。<br>但是还有一种特殊情况，一个类中包含多个非public类，这时候，如果有三个非public类，编译器会得到三个.class文件，和正常情况一样，但是编译器正常情况会选择唯一的public类的class来作为数据接口，这种情况下不知道选择哪个作为接口。有的ide会报错，需要手动选择一个来运行。<br>编译器会将程序中包含main方法的类名提供给字节码解释器。如果多个非public类只有一个类还有main方法，这个程序还是无法顺利执行，必需手动选择。</p>
+<hr>
+<h3 id="4-3-5-隐式参数与显式参数"><a href="#4-3-5-隐式参数与显式参数" class="headerlink" title="4.3.5 隐式参数与显式参数"></a>4.3.5 隐式参数与显式参数</h3><ul>
+<li>java没有内联方法，所有方法都在类内部定义。是否将某个方法设置为内联是java虚拟机的任务。</li>
+</ul>
+<hr>
+<h3 id="4-3-6-封装的优点"><a href="#4-3-6-封装的优点" class="headerlink" title="4.3.6 封装的优点"></a>4.3.6 封装的优点</h3><ul>
+<li>警告：不要编写返回引用对象的访问器方法。例如：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public getHireDay()</span><br><span class="line">&#123;</span><br><span class="line">  return hireDay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>原因在于如果对于通过这个方法得到的引用对象使用对象自带的更改器方法setTime()就可以随意地使用该方法更改私有状态的值。</li>
+<li>如果需要返回一个可变对象的引用。首先要对他进行克隆。对象clone是指存放在另一个位置上的对象副本。</li>
+</ul>
+<hr>
+<h3 id="4-3-9-final实例域"><a href="#4-3-9-final实例域" class="headerlink" title="4.3.9 final实例域"></a>4.3.9 final实例域</h3><ul>
+<li>final修饰符应该用在基本类型域或者不可变类的域（不可变类的意思是该类中所有方法都不会改变其对象）。对可变类使用final修饰符会产生问题<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">private final StringBuilder evaluations;</span><br><span class="line">evaluations = new StringBuilder();</span><br></pre></td></tr></table></figure></li>
+<li>final 关键字只是表示存储在evaluations中的对象引用不会指示其他StringBuilder对象。但是这个对象本身却是可以修改的。</li>
+</ul>
+<hr>
+<h2 id="4-4-静态域与静态方法"><a href="#4-4-静态域与静态方法" class="headerlink" title="4.4 静态域与静态方法"></a>4.4 静态域与静态方法</h2><ul>
+<li>静态域。静态域就是实例域添加了static关键字。如果将某个域定义为static，那么这个静态域就不同于其他实例域，实例域属于对象，每个对象对实例域都有一份自己的拷贝，但是静态域只属于类，不属于对象，所有对象都共享一个静态域。即使没有对象，静态域也存在，因为它属于类。 </li>
+<li>静态常量。Math中有静态常量 <code>public static final double PI = 3.14...</code> 如果没有static关键字，那么就表示PI是实例域，必须要由对象访问PI。</li>
+<li>静态方法。静态方法是一种不能向对象实施操作的方法。其没有隐式的参数。就是没有this。但是他却可以访问静态域。<br>以下两种情况使用静态方法：</li>
+<li>不需要访问对象状态</li>
+<li>只需要访问静态域</li>
+<li>工厂方法。工厂方法相较于构造器有两个好处：1 可以对不同对象命名不同。2 工厂方法可以改变所构造对象的类型（通过继承）。</li>
+<li>main方法。首先要注意不需要使用对象就可以调用静态方法，所以main方法可以直接被调用，而不需要对象。main方法不对任何对象进行操作。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Application</span><br><span class="line">&#123;</span><br><span class="line">  public static void main(String[] args)</span><br><span class="line">  &#123;</span><br><span class="line">      ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>每一个类可以有一个main方法，通过这个main方法可以对类进行测试。如果有一个em类可以在其中写入一个 static main方法，如果执行java em就可以只对em类进行测试，如果em属于一个更大的类app，那么运行java app时，em里的main方法永远不会得到执行。</li>
+</ul>
+<hr>
+<h1 id="以下开始写的稍微能看-1-0"><a href="#以下开始写的稍微能看-1-0" class="headerlink" title="以下开始写的稍微能看 1.0"></a>以下开始写的稍微能看 1.0</h1><h2 id="4-5-方法参数"><a href="#4-5-方法参数" class="headerlink" title="4.5 方法参数"></a>4.5 方法参数</h2><ul>
+<li>这里Java不同于C++，C++有按值调用和按引用调用。Java只有按值调用。Java得到的是参数值的拷贝，所以Java不能修改能到的参数变量的内容。这里存在三种情况。</li>
+<li>1 调用基本数据类型的变量，变量的值无法改变</li>
+<li>2 调用对象参数，这里得到的是对象引用的拷贝。所以可以改变对象参数的状态。</li>
+<li>3 同时却不能让对象参数引用一个新的对象。</li>
+</ul>
+<hr>
+<h2 id="4-6-对象构造"><a href="#4-6-对象构造" class="headerlink" title="4.6 对象构造"></a>4.6 对象构造</h2><ul>
+<li>重载：类可以有多个构造器的特征叫做重载。</li>
+<li>方法的签名：指出方法名以及方法的参数类型的描述。注意，方法签名不包含返回值类型。</li>
+<li>域的默认值：数值为0，布尔值为false，对象引用为null。</li>
+<li>无参数的构造器：如果编写一个类时没有编写构造器，那么系统会提供一个无参数的构造器。但是如果编写类时已经提供其他构造器，却没有提供无参构造器，此时系统不会再提供无参构造器。</li>
+<li>显式域初始化：1 可以在类定义中，直接把值赋给任何域。2 初始值不一定是常量值。可以调用方法对域进行初始化。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Employee</span><br><span class="line">&#123;</span><br><span class="line">    private static int nextId;</span><br><span class="line">    private int id = assignId();</span><br><span class="line">    ...</span><br><span class="line">    private static int assignId()</span><br><span class="line">    &#123;</span><br><span class="line">        int r = nextId;</span><br><span class="line">        nextId++;</span><br><span class="line">        return r;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>参数名：<code>name = aName</code></li>
+<li>调用另一个构造器：关键字this的作用：1 引用方法的隐式参数。2 调用同一个类的另一个构造器。</li>
+<li>初始化块：初始化数据域的方法：1 构造器中设置。 2 声明中赋值。 3 使用初始化块。使用初始化块后，不论使用哪个构造器构造对象，id都将在初始化块中被初始化。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Employee</span><br><span class="line">&#123;</span><br><span class="line">    private static int nextId;</span><br><span class="line"></span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        id = nextId;</span><br><span class="line">        nextId++;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="4-7-包"><a href="#4-7-包" class="headerlink" title="4.7 包"></a>4.7 包</h2><ul>
+<li>静态导入：<code>import static java.lang.System.*</code> 这样可以使用静态方法和静态域。</li>
+<li>类的导入：一个类可以使用所属包的所有类以及其他包中的公有类。</li>
+<li>将类放入包：使用哪个 <code>package com.horstmann.corejava</code></li>
+<li>包作用域：public的部分可以被任意的类使用。private部分只能被定义它们的类使用。如果没有指定public或private，这个部分可以被同一个包中的所有方法访问。 </li>
+</ul>
+<hr>
+<h2 id="4-8-类路径"><a href="#4-8-类路径" class="headerlink" title="4.8 类路径"></a>4.8 类路径</h2><ul>
+<li>设置类路径：</li>
+<li>windows：<code>java -cp c:\classdir;.;c:\archives\archive.jar MyProg</code></li>
+<li>设置环境变量（临时非永久）<br><code>set CLASSPATH=c:\classdir;.;c:\archives\archive.jar</code></li>
+</ul>
+<hr>
+<h2 id="4-9-文档注释"><a href="#4-9-文档注释" class="headerlink" title="4.9 文档注释"></a>4.9 文档注释</h2><ul>
+<li>这里暂时不叙述。</li>
+</ul>
+<hr>
+<h2 id="4-10-类设计技巧"><a href="#4-10-类设计技巧" class="headerlink" title="4.10 类设计技巧"></a>4.10 类设计技巧</h2><ul>
+<li>一定要保证数据私有！</li>
+<li>一定要对数据初始化！最好显示初始化所有数据。</li>
+<li>不要在类中使用过多的基本类型。可以用其他的类代替相关的基本类型。</li>
+<li>不是所有的域都需要独立的域访问器和域更改器。</li>
+<li>将指责过多的类进行分解。</li>
+<li>类名和方法名要体现职责。</li>
+<li>优先使用不可变的类。</li>
+</ul>
+<hr>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/14/C3_Java%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">第四章 对象与类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">4.1 面向对象程序设计概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-1-%E7%B1%BB"><span class="nav-number">1.1.1.</span> <span class="nav-text">4.1.1 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-4-%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.2.</span> <span class="nav-text">4.1.4 类之间的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">4.2 使用预定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-3-%E6%9B%B4%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">4.2.3 更改器方法与访问器方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">4.3 用户自定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-5-%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0%E4%B8%8E%E6%98%BE%E5%BC%8F%E5%8F%82%E6%95%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">4.3.5 隐式参数与显式参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-6-%E5%B0%81%E8%A3%85%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.3.2.</span> <span class="nav-text">4.3.6 封装的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-9-final%E5%AE%9E%E4%BE%8B%E5%9F%9F"><span class="nav-number">1.3.3.</span> <span class="nav-text">4.3.9 final实例域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-%E9%9D%99%E6%80%81%E5%9F%9F%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">4.4 静态域与静态方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A5%E4%B8%8B%E5%BC%80%E5%A7%8B%E5%86%99%E7%9A%84%E7%A8%8D%E5%BE%AE%E8%83%BD%E7%9C%8B-1-0"><span class="nav-number">2.</span> <span class="nav-text">以下开始写的稍微能看 1.0</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">4.5 方法参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0"><span class="nav-number">2.2.</span> <span class="nav-text">4.6 对象构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-7-%E5%8C%85"><span class="nav-number">2.3.</span> <span class="nav-text">4.7 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-8-%E7%B1%BB%E8%B7%AF%E5%BE%84"><span class="nav-number">2.4.</span> <span class="nav-text">4.8 类路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-9-%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="nav-number">2.5.</span> <span class="nav-text">4.9 文档注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-10-%E7%B1%BB%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7"><span class="nav-number">2.6.</span> <span class="nav-text">4.10 类设计技巧</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lito</p>
+  <div class="site-description" itemprop="description">。。。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lito</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

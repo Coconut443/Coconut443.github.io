@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"coconut443.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第五章 继承 5.1 类、超类和子类。 已存在的类称为超类（superclass）、基类或父类。新类称为子类（subclass）、派生类或孩子类。 覆盖方法：超类中的方法对于子类并不适用时，需要提供新方法覆盖（override）超类中的方法。 子类不能直接访问超类的私有域。需要借助超类的公有方法来访问，但是要用super.method()。 super：super只是一个关键字。不是类似于this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lito的博客">
+<meta property="og:url" content="http://coconut443.github.io/2021/06/14/C5_%E7%BB%A7%E6%89%BF/index.html">
+<meta property="og:site_name" content="Lito的博客">
+<meta property="og:description" content="第五章 继承 5.1 类、超类和子类。 已存在的类称为超类（superclass）、基类或父类。新类称为子类（subclass）、派生类或孩子类。 覆盖方法：超类中的方法对于子类并不适用时，需要提供新方法覆盖（override）超类中的方法。 子类不能直接访问超类的私有域。需要借助超类的公有方法来访问，但是要用super.method()。 super：super只是一个关键字。不是类似于this">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-14T14:07:04.153Z">
+<meta property="article:modified_time" content="2021-06-05T02:23:31.410Z">
+<meta property="article:author" content="Lito">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://coconut443.github.io/2021/06/14/C5_%E7%BB%A7%E6%89%BF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Lito的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lito的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少有人走的路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://coconut443.github.io/2021/06/14/C5_%E7%BB%A7%E6%89%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lito">
+      <meta itemprop="description" content="。。。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lito的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-14 22:07:04" itemprop="dateCreated datePublished" datetime="2021-06-14T22:07:04+08:00">2021-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-05 10:23:31" itemprop="dateModified" datetime="2021-06-05T10:23:31+08:00">2021-06-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="第五章-继承"><a href="#第五章-继承" class="headerlink" title="第五章 继承"></a>第五章 继承</h1><blockquote>
+<h2 id="5-1-类、超类和子类。"><a href="#5-1-类、超类和子类。" class="headerlink" title="5.1 类、超类和子类。"></a>5.1 类、超类和子类。</h2><ul>
+<li>已存在的类称为超类（superclass）、基类或父类。新类称为子类（subclass）、派生类或孩子类。</li>
+<li>覆盖方法：超类中的方法对于子类并不适用时，需要提供新方法覆盖（override）超类中的方法。</li>
+<li>子类不能直接访问超类的私有域。需要借助超类的公有方法来访问，但是要用<code>super.method()</code>。</li>
+<li>super：super只是一个关键字。不是类似于this的东西，因为super不是对象的引用，不能赋给一个对象变量。其有两个用途：1 调用超类方法。 2 调用超类构造器。</li>
+<li>多态：一个对象变量可以指示多种实际类型的现象叫做多态。在运行时能够自动选择调用哪个方法的现象叫做动态绑定。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">    Manager boss = new Manager(&quot;Hank&quot;, 8000, 2021, 2, 2);</span><br><span class="line">    boss.setBonus(5000);</span><br><span class="line"></span><br><span class="line">    Employee[] staff = new Employee[3];</span><br><span class="line">    staff[0] = boss;</span><br><span class="line">    staff[1] = new Employee(&quot;Haryy&quot;, 7000, 2021, 2,3);</span><br><span class="line">    staff[2] = new Employee(&quot;Tony&quot;, 7000, 2021, 2,4);</span><br><span class="line">    </span><br><span class="line">    // 这里Employee e既可是employee，也可是manager，虚拟机根据类型正确调用方法。</span><br><span class="line">    for (Employee e : staff)</span><br><span class="line">        System.out.println(e.getName() +  &quot; &quot; + e.getSalary());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>置换法则：程序中出现超类对象的任何地方都可以用子类对象置换。</li>
+<li>多态：在Java中对象变量是多态的。一个Employee变量既可以引用一个Employee对象，也可以引用一个Employee类的任何一个子类的对象。</li>
+<li>如果在子类中定义了一个与超类签名相同的方法，那么子类中的方法就覆盖了超类中的方法。</li>
+<li>理解方法调用过程。p155</li>
+<li>在覆盖一个方法时，子类方法不能低于超类方法的可见性。  </li>
+<li>使用final修饰符可以定义某一类为不允许扩展。类中的某个方法也可以被声明为final，表示子类不能覆盖这个方法。如果将一个类声明为final，那么只有其中的方法自动成为final，而不包括域。<br><code>public final class Executive extends Manager</code></li>
+<li>将一个子类的引用赋给一个超类变量，编译器是允许的。将一个超类的引用赋给一个子类变量，必须进行类型转换。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 这样可以  </span><br><span class="line">Manager boss = new Manager();</span><br><span class="line">Employee em = boss;</span><br><span class="line">// 这样不行 </span><br><span class="line">Employee em = new Employee()</span><br><span class="line">Manager boss = em;</span><br><span class="line"></span><br><span class="line">// 在继承链上进行向下的类型转换，并且谎报关于对象包含的内容，em不是manager引用</span><br><span class="line">Manager boss = (Manager) em; // error ClassCastException</span><br><span class="line">// 但下面这个是对的。因为超类可以引用子类对象，而staff[0]本来就引用manager对象</span><br><span class="line">Manager boss = (Manager) staff[0];</span><br><span class="line"></span><br><span class="line">// 建议使用</span><br><span class="line">if (staff[1] instanceof Manager)</span><br><span class="line">&#123;</span><br><span class="line">    boss = (Manager) staff[1];</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>只能在继承层次内进行类型转换。</li>
+<li>将超类转换成子类之前，应该使用instanceof进行检查。</li>
+</ul>
+</blockquote>
+<blockquote>
+<hr>
+<h2 id="5-2-Object：所有类的超类"><a href="#5-2-Object：所有类的超类" class="headerlink" title="5.2 Object：所有类的超类"></a>5.2 Object：所有类的超类</h2><ul>
+<li>为避免发生类型错误，可使用@Override对覆盖超类的方法进行标记</li>
+<li><code>@Override public boolean  (Object otherObject)</code></li>
+<li>这样可以避免这样的错误(会报错)：<br><code>@override public boolean equals(Employee other)</code></li>
+<li>hashCode方法定义在Object中，每个对象都有一个默认的hashcode，其值为对象的存储地址。</li>
+<li>string 类型有自己的hashcode计算方法，相当于覆盖了object的hashcode</li>
+<li>如果重新定义equals方法，就必须重新定义hashCode方法。</li>
+<li>使用null安全的 <code>Objects.hashCode()</code> 方法获得对象的hashcode，对于基本类型例如double可以使用 <code>Double.hashCode()</code> 。</li>
+<li>如果需要组合多个散列值时，使用 <code>Objects.hash()</code> 并提供多个参数。</li>
+<li>Equals和hashCode的定义必须一致。如果 <code>x.equals(y)</code> 返回true，那么 <code>x.hashCode()</code> 的值也必须与y的hashCode一致。</li>
+<li>例如：如果equals比较的是店员的ID，那么hashcode方法需要hash雇员的ID。</li>
+<li>toString方法：x.toString() 可以用 +x 替代。这条语句将一个空串与x的字符串表示相连接。 如果x是基本类型，这条语句照样能够执行。</li>
+<li>Object定义了toString方法，用来输出对象所属的类名和散列码。而数组继承了object的toString方法，所以如果直接把数组变成string，会输出类型和散列吗。可以调用 <code>Arrays.toString()</code> </li>
+<li>强烈建议为自定义的每一个类增加toString()方法，这样可以随时查看状态。</li>
+</ul>
+<hr>
+<h2 id="5-3-泛型数组列表"><a href="#5-3-泛型数组列表" class="headerlink" title="5.3 泛型数组列表"></a>5.3 泛型数组列表</h2><ul>
+<li>ArrayList：是一个采用<em>类型参数</em>的<em>泛型类</em>。</li>
+<li>如果有两个ArrayList类型的a和b， 那么a=b是让a和b引用同一个数组列表。</li>
+<li>使用以下这个技巧可以方便访问数组元素<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;X&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">while(..)</span><br><span class="line">&#123;</span><br><span class="line">    x = ...;</span><br><span class="line">    list.add(x); </span><br><span class="line">&#125;</span><br><span class="line">X[] a = new X[list.size()];</span><br><span class="line">list.toArray(a);</span><br></pre></td></tr></table></figure></li>
+<li>书中p183提到了类型化的ArrayList和原始数组列表的兼容性问题，这里暂时不研究。</li>
+</ul>
+<hr>
+<h2 id="5-4-对象包装器与自动装箱"><a href="#5-4-对象包装器与自动装箱" class="headerlink" title="5.4 对象包装器与自动装箱"></a>5.4 对象包装器与自动装箱</h2><ul>
+<li>包装器：Integer，Long，Double 等。</li>
+<li>包装器特点：对象包装器类不可以变，一旦构造了包装器，不能更改其中的值，并且是final，不能定义子类。  </li>
+<li><code>ArrayList&lt;Integer&gt;</code> 有自动装箱特性，对它的很多操作可以看成直接对int操作。</li>
+</ul>
+<hr>
+<h2 id="5-5-参数数量可变的方法"><a href="#5-5-参数数量可变的方法" class="headerlink" title="5.5 参数数量可变的方法"></a>5.5 参数数量可变的方法</h2><ul>
+<li><code> public PrintStream printf(String fmt, Object... args) &#123; return format(fmt, args); &#125;</code></li>
+<li>…是java代码的一部分，表示可以接受任意数量的对象。起始可以看作是一个Object[]数组。<h2 id="5-7-反射"><a href="#5-7-反射" class="headerlink" title="5.7 反射"></a>5.7 反射</h2></li>
+<li>反射：能够分析类能力的程序称为反射。</li>
+<li>反射机制可以用来：</li>
+<li>在运行时分析类的能力。</li>
+<li>在运行时查看对象。</li>
+<li>实现通用的数组操作代码。</li>
+<li>利用Method对象，这个对象很像C++中的函数指针。</li>
+<li>Class类：程序运行期间，Java为所有对象维护一个被称为运行时的类型标识。可以通过Class类来访问这些信息。</li>
+<li>Class类实际是一个泛型类。Employee.class的类型是Class&lt;Employee&gt;</li>
+<li>可以使用==运算符实现两个类对象比较。 <code>if(e.getClass() == Employee.class)</code></li>
+<li>可以使用nweInstance()动态创建一个类的实例。</li>
+<li><code>e.getClass().newInstance();</code> 创建一个与e具有相同类类型的实例。</li>
+<li>异常类型：未检查异常和已检查异常。对于已检查异常，编译器将会检查是否提供了处理器。</li>
+</ul>
+<hr>
+<h2 id="5-8-继承的设计技巧"><a href="#5-8-继承的设计技巧" class="headerlink" title="5.8 继承的设计技巧"></a>5.8 继承的设计技巧</h2><ul>
+<li>将公共操作和域放在超类。</li>
+<li>不要使用受保护的域。</li>
+<li>使用继承实现“is a“关系。</li>
+<li>除非所有继承的方法都有意义，否则不要使用继承。</li>
+<li>在覆盖方法时，不要改变预期的行为。在覆盖子类中的方法时，不要偏离最初的设计想法。</li>
+<li>使用多态，而非类型信息。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (x is oftype1)</span><br><span class="line">    action1(x);</span><br><span class="line">else if (x is oftype2)</span><br><span class="line">    action2(x);</span><br></pre></td></tr></table></figure></li>
+<li>遇到以上代码应该考虑使用多态性。action1和action2如果是相同的概念，就应该为这个概念定义一个方法，将其放在两个类的超类或接口中。</li>
+<li>不要过多地使用反射。</li>
+</ul>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/13/%E5%B0%91%E6%9C%89%E4%BA%BA%E8%B5%B0%E7%9A%84%E8%B7%AF%EF%BC%88%E5%BF%83%E7%90%86%E7%B1%BB%EF%BC%89/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/14/C3_Java%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E7%BB%A7%E6%89%BF"><span class="nav-number">1.</span> <span class="nav-text">第五章 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E7%B1%BB%E3%80%81%E8%B6%85%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB%E3%80%82"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 类、超类和子类。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-Object%EF%BC%9A%E6%89%80%E6%9C%89%E7%B1%BB%E7%9A%84%E8%B6%85%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 Object：所有类的超类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-%E6%B3%9B%E5%9E%8B%E6%95%B0%E7%BB%84%E5%88%97%E8%A1%A8"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 泛型数组列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-%E5%AF%B9%E8%B1%A1%E5%8C%85%E8%A3%85%E5%99%A8%E4%B8%8E%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 对象包装器与自动装箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-%E5%8F%82%E6%95%B0%E6%95%B0%E9%87%8F%E5%8F%AF%E5%8F%98%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">5.5 参数数量可变的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-7-%E5%8F%8D%E5%B0%84"><span class="nav-number">1.6.</span> <span class="nav-text">5.7 反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-8-%E7%BB%A7%E6%89%BF%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%8A%80%E5%B7%A7"><span class="nav-number">1.7.</span> <span class="nav-text">5.8 继承的设计技巧</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lito</p>
+  <div class="site-description" itemprop="description">。。。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lito</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

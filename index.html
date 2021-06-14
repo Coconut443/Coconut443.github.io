@@ -149,6 +149,481 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://coconut443.github.io/2021/06/14/C4_%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lito">
+      <meta itemprop="description" content="。。。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lito的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/14/C4_%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-14 22:07:04" itemprop="dateCreated datePublished" datetime="2021-06-14T22:07:04+08:00">2021-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-29 09:49:18" itemprop="dateModified" datetime="2021-05-29T09:49:18+08:00">2021-05-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第四章-对象与类"><a href="#第四章-对象与类" class="headerlink" title="第四章 对象与类"></a>第四章 对象与类</h1><h2 id="4-1-面向对象程序设计概述"><a href="#4-1-面向对象程序设计概述" class="headerlink" title="4.1 面向对象程序设计概述"></a>4.1 面向对象程序设计概述</h2><blockquote>
+<h3 id="4-1-1-类"><a href="#4-1-1-类" class="headerlink" title="4.1.1 类"></a>4.1.1 类</h3><p>实现封装的关键在于$绝对不能$让类中的方法直接地访问其他类的实例域。<br>想要使用OOP，一定要清楚对象的三个主要特性：</p>
+<ul>
+<li>对象的行为——可以对对象施加哪些操作或方法</li>
+<li>对象的状态——施加那些方法时，对象如何响应</li>
+<li>对象标识——如何辨别具有相同行为与状态的不同对象<br>如果不经过方法调用就可以改变对象状态，只能说明封装性遭到了破坏。<h3 id="4-1-4-类之间的关系"><a href="#4-1-4-类之间的关系" class="headerlink" title="4.1.4 类之间的关系"></a>4.1.4 类之间的关系</h3>依赖关系：一个类的方法操纵另一个类的对象。应该尽可能地将相互依赖的类减至最少。让类之间耦合度最小。<br>聚合关系（关联关系）：A的对象包含B的对象。<br>继承关系：特殊与一般的关系。  <h2 id="4-2-使用预定义类"><a href="#4-2-使用预定义类" class="headerlink" title="4.2 使用预定义类"></a>4.2 使用预定义类</h2></li>
+</ul>
+<ol>
+<li>对象变量和对象的区别<br><code>Date dealine;</code><br>是一个对象变量，但是没有引用对象。要先初始化。<br><code>deadline = new Date();</code>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date deadline = new Date();</span><br></pre></td></tr></table></figure>
+new Date()是构造了一个Date类型的对象，并且他的值是对创建对象的引用。  </li>
+<li>这里提到了一个静态工厂方法。暂时没有详细解释。</li>
+</ol>
+<hr>
+<h3 id="4-2-3-更改器方法与访问器方法"><a href="#4-2-3-更改器方法与访问器方法" class="headerlink" title="4.2.3 更改器方法与访问器方法"></a>4.2.3 更改器方法与访问器方法</h3><ol>
+<li> <code>LocalDate aThousandDaysLater = newYearEve.plusDays(1000);</code> 这个方法调用后，newYearsEve不会改为1000天之后的日期。而会生成一个新的LocalDate对象，把这个新的对象赋予aThousandDaysKater。  </li>
+<li>只访问对象而不修改对象的方法有时称为访问器方法。修改对象的方法称为更改器方法。  </li>
+<li>在C++中，带有const的方法是访问器方法，默认为更改器方法。  </li>
+</ol>
+<hr>
+<h2 id="4-3-用户自定义类"><a href="#4-3-用户自定义类" class="headerlink" title="4.3 用户自定义类"></a>4.3 用户自定义类</h2><p>创建的java文件名必须和public类的名字相匹配。一个源文件中，只能由一个公有类，但可以有任意数目的非公有类。一个文件中可以只有非public类，如果只有一个非public类，此类可以跟文件名不同。<br>每个编译单元（文件）都只能有一个public类，这表示，每个编译单元都有单一的公共接口，用public类来表现。该接口可以按要求包含众多的支持包访问权限的类。如果在某个编译单元内有一个以上的public类，编译器就会给出错误信息。<br>public类的名称必需完全与含有该编译单元的文件名相同。不同将会编译错误。当编译单元完全不带public类也行，且可以对文件随意命名。<br>一个编译单元可以存在多个类，编译时产生多个.class文件，.class文件是程序运行的数据来源。java将public类作为每个编译单元的数据接口，只能有一个。不然不能处理存在多个类的java文件。当一个编译单元有多个非public类时，运行时需要对数据来源进行选择。<br>一个文件也叫一个编译单元。只有一个public类表示每个编译单元都只有一个单一的公共接口。<br>但是还有一种特殊情况，一个类中包含多个非public类，这时候，如果有三个非public类，编译器会得到三个.class文件，和正常情况一样，但是编译器正常情况会选择唯一的public类的class来作为数据接口，这种情况下不知道选择哪个作为接口。有的ide会报错，需要手动选择一个来运行。<br>编译器会将程序中包含main方法的类名提供给字节码解释器。如果多个非public类只有一个类还有main方法，这个程序还是无法顺利执行，必需手动选择。</p>
+<hr>
+<h3 id="4-3-5-隐式参数与显式参数"><a href="#4-3-5-隐式参数与显式参数" class="headerlink" title="4.3.5 隐式参数与显式参数"></a>4.3.5 隐式参数与显式参数</h3><ul>
+<li>java没有内联方法，所有方法都在类内部定义。是否将某个方法设置为内联是java虚拟机的任务。</li>
+</ul>
+<hr>
+<h3 id="4-3-6-封装的优点"><a href="#4-3-6-封装的优点" class="headerlink" title="4.3.6 封装的优点"></a>4.3.6 封装的优点</h3><ul>
+<li>警告：不要编写返回引用对象的访问器方法。例如：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public getHireDay()</span><br><span class="line">&#123;</span><br><span class="line">  return hireDay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>原因在于如果对于通过这个方法得到的引用对象使用对象自带的更改器方法setTime()就可以随意地使用该方法更改私有状态的值。</li>
+<li>如果需要返回一个可变对象的引用。首先要对他进行克隆。对象clone是指存放在另一个位置上的对象副本。</li>
+</ul>
+<hr>
+<h3 id="4-3-9-final实例域"><a href="#4-3-9-final实例域" class="headerlink" title="4.3.9 final实例域"></a>4.3.9 final实例域</h3><ul>
+<li>final修饰符应该用在基本类型域或者不可变类的域（不可变类的意思是该类中所有方法都不会改变其对象）。对可变类使用final修饰符会产生问题<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">private final StringBuilder evaluations;</span><br><span class="line">evaluations = new StringBuilder();</span><br></pre></td></tr></table></figure></li>
+<li>final 关键字只是表示存储在evaluations中的对象引用不会指示其他StringBuilder对象。但是这个对象本身却是可以修改的。</li>
+</ul>
+<hr>
+<h2 id="4-4-静态域与静态方法"><a href="#4-4-静态域与静态方法" class="headerlink" title="4.4 静态域与静态方法"></a>4.4 静态域与静态方法</h2><ul>
+<li>静态域。静态域就是实例域添加了static关键字。如果将某个域定义为static，那么这个静态域就不同于其他实例域，实例域属于对象，每个对象对实例域都有一份自己的拷贝，但是静态域只属于类，不属于对象，所有对象都共享一个静态域。即使没有对象，静态域也存在，因为它属于类。 </li>
+<li>静态常量。Math中有静态常量 <code>public static final double PI = 3.14...</code> 如果没有static关键字，那么就表示PI是实例域，必须要由对象访问PI。</li>
+<li>静态方法。静态方法是一种不能向对象实施操作的方法。其没有隐式的参数。就是没有this。但是他却可以访问静态域。<br>以下两种情况使用静态方法：</li>
+<li>不需要访问对象状态</li>
+<li>只需要访问静态域</li>
+<li>工厂方法。工厂方法相较于构造器有两个好处：1 可以对不同对象命名不同。2 工厂方法可以改变所构造对象的类型（通过继承）。</li>
+<li>main方法。首先要注意不需要使用对象就可以调用静态方法，所以main方法可以直接被调用，而不需要对象。main方法不对任何对象进行操作。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Application</span><br><span class="line">&#123;</span><br><span class="line">  public static void main(String[] args)</span><br><span class="line">  &#123;</span><br><span class="line">      ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>每一个类可以有一个main方法，通过这个main方法可以对类进行测试。如果有一个em类可以在其中写入一个 static main方法，如果执行java em就可以只对em类进行测试，如果em属于一个更大的类app，那么运行java app时，em里的main方法永远不会得到执行。</li>
+</ul>
+<hr>
+<h1 id="以下开始写的稍微能看-1-0"><a href="#以下开始写的稍微能看-1-0" class="headerlink" title="以下开始写的稍微能看 1.0"></a>以下开始写的稍微能看 1.0</h1><h2 id="4-5-方法参数"><a href="#4-5-方法参数" class="headerlink" title="4.5 方法参数"></a>4.5 方法参数</h2><ul>
+<li>这里Java不同于C++，C++有按值调用和按引用调用。Java只有按值调用。Java得到的是参数值的拷贝，所以Java不能修改能到的参数变量的内容。这里存在三种情况。</li>
+<li>1 调用基本数据类型的变量，变量的值无法改变</li>
+<li>2 调用对象参数，这里得到的是对象引用的拷贝。所以可以改变对象参数的状态。</li>
+<li>3 同时却不能让对象参数引用一个新的对象。</li>
+</ul>
+<hr>
+<h2 id="4-6-对象构造"><a href="#4-6-对象构造" class="headerlink" title="4.6 对象构造"></a>4.6 对象构造</h2><ul>
+<li>重载：类可以有多个构造器的特征叫做重载。</li>
+<li>方法的签名：指出方法名以及方法的参数类型的描述。注意，方法签名不包含返回值类型。</li>
+<li>域的默认值：数值为0，布尔值为false，对象引用为null。</li>
+<li>无参数的构造器：如果编写一个类时没有编写构造器，那么系统会提供一个无参数的构造器。但是如果编写类时已经提供其他构造器，却没有提供无参构造器，此时系统不会再提供无参构造器。</li>
+<li>显式域初始化：1 可以在类定义中，直接把值赋给任何域。2 初始值不一定是常量值。可以调用方法对域进行初始化。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Employee</span><br><span class="line">&#123;</span><br><span class="line">    private static int nextId;</span><br><span class="line">    private int id = assignId();</span><br><span class="line">    ...</span><br><span class="line">    private static int assignId()</span><br><span class="line">    &#123;</span><br><span class="line">        int r = nextId;</span><br><span class="line">        nextId++;</span><br><span class="line">        return r;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>参数名：<code>name = aName</code></li>
+<li>调用另一个构造器：关键字this的作用：1 引用方法的隐式参数。2 调用同一个类的另一个构造器。</li>
+<li>初始化块：初始化数据域的方法：1 构造器中设置。 2 声明中赋值。 3 使用初始化块。使用初始化块后，不论使用哪个构造器构造对象，id都将在初始化块中被初始化。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Employee</span><br><span class="line">&#123;</span><br><span class="line">    private static int nextId;</span><br><span class="line"></span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        id = nextId;</span><br><span class="line">        nextId++;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="4-7-包"><a href="#4-7-包" class="headerlink" title="4.7 包"></a>4.7 包</h2><ul>
+<li>静态导入：<code>import static java.lang.System.*</code> 这样可以使用静态方法和静态域。</li>
+<li>类的导入：一个类可以使用所属包的所有类以及其他包中的公有类。</li>
+<li>将类放入包：使用哪个 <code>package com.horstmann.corejava</code></li>
+<li>包作用域：public的部分可以被任意的类使用。private部分只能被定义它们的类使用。如果没有指定public或private，这个部分可以被同一个包中的所有方法访问。 </li>
+</ul>
+<hr>
+<h2 id="4-8-类路径"><a href="#4-8-类路径" class="headerlink" title="4.8 类路径"></a>4.8 类路径</h2><ul>
+<li>设置类路径：</li>
+<li>windows：<code>java -cp c:\classdir;.;c:\archives\archive.jar MyProg</code></li>
+<li>设置环境变量（临时非永久）<br><code>set CLASSPATH=c:\classdir;.;c:\archives\archive.jar</code></li>
+</ul>
+<hr>
+<h2 id="4-9-文档注释"><a href="#4-9-文档注释" class="headerlink" title="4.9 文档注释"></a>4.9 文档注释</h2><ul>
+<li>这里暂时不叙述。</li>
+</ul>
+<hr>
+<h2 id="4-10-类设计技巧"><a href="#4-10-类设计技巧" class="headerlink" title="4.10 类设计技巧"></a>4.10 类设计技巧</h2><ul>
+<li>一定要保证数据私有！</li>
+<li>一定要对数据初始化！最好显示初始化所有数据。</li>
+<li>不要在类中使用过多的基本类型。可以用其他的类代替相关的基本类型。</li>
+<li>不是所有的域都需要独立的域访问器和域更改器。</li>
+<li>将指责过多的类进行分解。</li>
+<li>类名和方法名要体现职责。</li>
+<li>优先使用不可变的类。</li>
+</ul>
+<hr>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://coconut443.github.io/2021/06/14/C3_Java%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lito">
+      <meta itemprop="description" content="。。。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lito的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/14/C3_Java%E5%9F%BA%E6%9C%AC%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-14 22:07:04" itemprop="dateCreated datePublished" datetime="2021-06-14T22:07:04+08:00">2021-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-05-29 09:49:18" itemprop="dateModified" datetime="2021-05-29T09:49:18+08:00">2021-05-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第三章-基本程序结构设计"><a href="#第三章-基本程序结构设计" class="headerlink" title="第三章 基本程序结构设计"></a>第三章 基本程序结构设计</h1><blockquote>
+<h2 id="0-一个简单的Java应用程序"><a href="#0-一个简单的Java应用程序" class="headerlink" title="0. 一个简单的Java应用程序"></a>0. 一个简单的Java应用程序</h2><pre><code>public class FirstSample
+&#123;
+    public static void main(String[] args)
+    &#123;
+        System.out.println(&quot;We will not use &#39;Hello world!&#39;);
+    &#125;
+&#125;
+</code></pre>
+<p>分析这个程序</p>
+<ol>
+<li>public 访问修饰符，控制程序的其他部分对代码的访问级别。  </li>
+<li>class 关键字 Java程序中全部内容都包含在类中。  </li>
+<li>java中对类名规则宽松，名字必须一字母开头，可以是字母和数字任意组合，不能使用保留字作为类名。例：FirstSample F和S大写  </li>
+<li>源代码的文件名必需与公共类名字相同。文件名必须为FirstSample.java  </li>
+<li>java区分大小写 </li>
+<li>必须有main方法，且main必须声明为public  </li>
+<li>main没有为操作系统返回 退出代码，如果正常退出，直接给出退出代码为0。<br>如果希望返回其他代码，则需要调用System.exit方法  </li>
+</ol>
+<hr>
+<h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h2><h3 id="1-1-整型"><a href="#1-1-整型" class="headerlink" title="1.1 整型"></a>1.1 整型</h3><ol>
+<li>0x前缀表示16进制。  </li>
+<li>L或l后缀表示长整型数值。  </li>
+<li>java没有无符号int long short byte类型。</li>
+</ol>
+<hr>
+<h3 id="1-2-浮点类型"><a href="#1-2-浮点类型" class="headerlink" title="1.2 浮点类型"></a>1.2 浮点类型</h3><ol>
+<li>float类型数值有一个后缀F或f。没有后缀F的浮点数值默认为double。也可加D/d。  </li>
+<li>可以使用<code>Double.isNaN(x)</code>来判断是否为NaN类型。</li>
+<li>浮点数值不适用于不接受舍入误差的金融计算中。</li>
+</ol>
+<hr>
+<h3 id="1-3-char类型"><a href="#1-3-char类型" class="headerlink" title="1.3 char类型"></a>1.3 char类型</h3><ol>
+<li>\u \n为转义序列还有一些，\u可以出现在引号外面。<br>例如<code>public static void main&gt; (String\u005B\u005D args)</code></li>
+<li>转义序列会在解析代码之前得到处理。”\u0022+\u0022”不会得到”+”，<br>在解析前转换为”+”，所以会得到””+””，解析出来是空串</li>
+<li>要注意注释中的\u，可能会出现错误语法</li>
+</ol>
+<hr>
+<h3 id="1-4-Unicode与char类型"><a href="#1-4-Unicode与char类型" class="headerlink" title="1.4 Unicode与char类型"></a>1.4 Unicode与char类型</h3><ol>
+<li>强烈建议不仅要在程序中使用char类型，除非确实需要处理UTF-16代码单元。<br>最好将字符串作为抽象数据类型处理。</li>
+<li>在Java中char类型描述了UTF-16编码中的一个代码单元，所以有些unicode字符用一个char表示，有些需要用两个。</li>
+</ol>
+<hr>
+<h3 id="1-5-boolean类型"><a href="#1-5-boolean类型" class="headerlink" title="1.5 boolean类型"></a>1.5 boolean类型</h3><p>  整型值和布尔值之间不能进行相互转换。</p>
+<hr>
+<h2 id="2-变量"><a href="#2-变量" class="headerlink" title="2. 变量"></a>2. 变量</h2><ol>
+<li>可以使用<code>Character.isJavaIdentifierStart()</code><br>或者 <code>Character.isJavaIdentifierPart()</code>来检查unicode字符是否属于Java中字母。</li>
+<li>不要在自己的代码中使用$。</li>
+</ol>
+<hr>
+<h3 id="2-1-变量初始化"><a href="#2-1-变量初始化" class="headerlink" title="2.1 变量初始化"></a>2.1 变量初始化</h3><p>  Java中可以把声明放在代码中任何地方，Java中不区分变量和定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double salary = 65000.0</span><br><span class="line">System.out.println(salary);</span><br><span class="line">int vacationDays = 12;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-2-常量"><a href="#2-2-常量" class="headerlink" title="2.2 常量"></a>2.2 常量</h3><ol>
+<li>Java中使用<code>final</code>指示常量。表示这个变量只能被赋值一次。<br>习惯上常量名使用全大写。</li>
+<li><code>static final</code>表示一个类常量，其可以在一个类中的多个方法中使用。<br>如果声明加上<code>public</code>那么其他类也可以使用他。</li>
+</ol>
+<hr>
+<h2 id="3-运算符"><a href="#3-运算符" class="headerlink" title="3 运算符"></a>3 运算符</h2><ol>
+<li>当参与/的两个操作数都是整数，表示整数除法，否则表示浮点除法。</li>
+<li>可以使用<code>strictfp</code>表示该类必需使用严格的浮点计算。<br><code>public static strictfp void main(String[] args)</code>  </li>
+</ol>
+<hr>
+<h3 id="3-1-数学函数与常量"><a href="#3-1-数学函数与常量" class="headerlink" title="3.1 数学函数与常量"></a>3.1 数学函数与常量</h3><p>  Java中没有幂运算。 <code>double y = Math.pow(x, a)</code><br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import static java.lang.Math.*</span><br><span class="line">...</span><br><span class="line">System.out.println(sqrt(PI)); </span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="3-2-数值类型之间的转换"><a href="#3-2-数值类型之间的转换" class="headerlink" title="3.2 数值类型之间的转换"></a>3.2 数值类型之间的转换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int n = 123456789</span><br><span class="line">float f = n; // f is 1.23456792E8</span><br></pre></td></tr></table></figure>
+<p>如果使用两个数值进行二元操作，要先转化为同一类型，再进行计算。  </p>
+<ul>
+<li>one double，another -&gt; double</li>
+<li>else one float, another -&gt; float</li>
+<li>else one long, another -&gt; long,</li>
+<li>else int int</li>
+</ul>
+<hr>
+<h3 id="3-3-强制类型转换"><a href="#3-3-强制类型转换" class="headerlink" title="3.3 强制类型转换"></a>3.3 强制类型转换</h3><p>用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double x = 9.997;</span><br><span class="line">int nx = (int)x; </span><br></pre></td></tr></table></figure>
+<p>如果想进行舍入运算，使用<code>Math.round()</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double x = 9.997;</span><br><span class="line">int nx = (int)Math.round(x);</span><br></pre></td></tr></table></figure>
+<p>注意不要使用boolean进行任何强制类型转换 可以使用b? 1:0</p>
+<h3 id="3-4-关系和boolean运算符"><a href="#3-4-关系和boolean运算符" class="headerlink" title="3.4 关系和boolean运算符"></a>3.4 关系和boolean运算符</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x != 0 &amp;&amp; 1/x &gt; x + y</span><br><span class="line">```  </span><br><span class="line">因为x!=0所以后面不会出问题，因为前半部分会先计算，如果不满足不进入后半部分。</span><br><span class="line">### 3.5 位运算符</span><br><span class="line">1. 以下两式结果一样</span><br></pre></td></tr></table></figure>
+<p>int forthBitFromRight = (n &amp; (1 &lt;&lt; 3)) &gt;&gt; 3<br>int forthBitFromRight = (n &amp; 0b1000) / 0b1000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2. 移位运算符的右操作数要完成模32的运算，除非左操作数是long类型，</span><br><span class="line">在这种情况下需要对右操作数模64。 例如 1 &lt;&lt; 35 的值等同于 1 &lt;&lt; 3。</span><br><span class="line">3. 符号&gt;&gt;会使用符号位填充高位，符号&gt;&gt;&gt;则使用0填充高位。</span><br><span class="line">***</span><br><span class="line">### 3.6 字符串</span><br><span class="line">1. 子串</span><br></pre></td></tr></table></figure>
+<p>String gr = “Hello”;<br>String s = gr.substring(0,3);</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">2. 允许使用+拼接字符串</span><br><span class="line">3. 使用静态join方法将多个字符串放在一起，用一个定界符分割。  </span><br><span class="line">`String all = String.join(&quot;/&quot;, &quot;S&quot;, &quot;M&quot;, &quot;L&quot;, &quot;XL&quot;)`</span><br><span class="line">4. `s.equals(t)` 检验两个字符串是否相等。一定要用这个比较字符串。</span><br><span class="line">5. 使用 == 运算符对两个字符串进行比较，只能判断两个字符串是否在同一位置上。</span><br><span class="line">6. 还有 `if (gr.compareTo(&quot;Hello&quot;) == 0)`用来比较。</span><br><span class="line">7. 空串 `if （str.length() == 0)` 或 ` if (str.equals(&quot;&quot;))` </span><br><span class="line">8. 字符串是否为null `if (str == null)`</span><br><span class="line">9. 返回某个位置代码单元`char first = gr.charAt(0);`</span><br><span class="line">10. string API 直接看文档。</span><br><span class="line">11. 构建字符串 StringBuilder允许多线程方式操作。</span><br></pre></td></tr></table></figure>
+<p>  StringBuilder builder = new StringBuilder();<br>  builder.append(ch);<br>  builder.append(str);<br>  String comString = builder.toString();</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line">### 3.7 输入输出</span><br><span class="line">1. 读取输入  </span><br></pre></td></tr></table></figure>
+<pre><code>import java.util.*
+Scanner in = new Scanner(System.in);
+System.out.print(&quot;What&#39;s your name?&quot;);
+in.nextLine(); //读取一行
+in.next();     //读取一个单词
+in.nextInt()   //读取一个整数
+</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">`System.out.printf()` 可以输出多个参数</span><br><span class="line">此外可以使用Console类进行读取密码。</span><br></pre></td></tr></table></figure>
+<pre><code>Console cons = System.console();
+</code></pre>
+<p>   String username = cons.readLine(“User name: “);<br>   char[] passwd = cons.readPassword(“Password: “);<br>   System.out.println(“User name is “ + username);<br>   System.out.println(“Password is “ +  passwd);</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">console主要用于cmd，在netbean的控制台和eclipse的控制台里都不能使用。  </span><br><span class="line">2. `System.out.printf(&quot;%8.2f&quot;, x)` 这里输出 3333.33，一个空格加7位结果。  </span><br><span class="line">3. 可以使用静态 `String.format` 方法创建一个格式化字符串，不输出。  </span><br><span class="line">   `String message = String.format(&quot;Hello, %s.&quot;, name); `   </span><br><span class="line">4. `System.out.printf(&quot;%1$s %2$tB %2$te, %2$tY&quot;, &quot;Due date:&quot;, new Date())`  </span><br><span class="line">第一个%后面跟的是参数索引，以$结束。输出 Due date: February 9, 2015  </span><br><span class="line">5. ![格式说明符语法](pic1.JPG)</span><br><span class="line">6. 文件输入输出。 `Scanner in = new Scanner(Paths.get(&quot;myfile.txt&quot;), &quot;UTF-8&quot;);` 如果文件名包含\则需要加入额外的反斜杆\。这里要注意，读取一个文件时，要知道他的字符编码。  </span><br><span class="line">7. 写入文件 `PrintWriter out = new PrintWriter(&quot;myfile.txt&quot;, &quot;UTF-8&quot;);`   </span><br><span class="line">8. 如果误用 `Scanner in = new Scanner(&quot;myfile.txt&quot;);` 会将参数作为包含10个字符的数据。  </span><br><span class="line">9. 如果使用相对路径，则相对路径应该是文件相对Java虚拟机启动路径的位置。如果使用IDE，那么路径由IDE控制，可以使用下面的而命令找到路径位置。  </span><br><span class="line">` String dir = System.getProperty(&quot;user.dir&quot;); `  </span><br><span class="line">*** </span><br><span class="line">### 3.8 控制流程</span><br><span class="line">1. 不能在嵌套的两个块中声明同名的变量。</span><br><span class="line">2. else与最邻近的if构成一组。</span><br><span class="line">3. 在循环中，检测两个浮点数是否相等要特别注意。  </span><br><span class="line">  `for(double x = 0; x != 10; x+=0.1) ` </span><br><span class="line">  可能永远不会结束，因为舍入误差，得不到精确值。</span><br><span class="line">4. 尽量不使用switch语句。</span><br><span class="line">5. ` for(类型 对象 : 数组) ` for循环</span><br><span class="line">*** </span><br><span class="line">### 3.9 大数值</span><br><span class="line">1. </span><br></pre></td></tr></table></figure>
+<p>  BigInteger a = BigInteger.valueOf(100);<br>  BigInteger c = a.add(b);<br>  BigInteger d = a.multiply(b);<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### 3.10 数组</span><br><span class="line">1. 当创建一个数字数组时，所有的元素都初始化为0。对象数组初始化为null。</span><br><span class="line">2. 一旦创建了数组就不能再改变他的大小。</span><br><span class="line">3. 循环打印。还可以使用foreach或者Arrays.toString()。</span><br></pre></td></tr></table></figure><br>for (int element : a)<br>  System.out.println(a[i]);</p>
+<pre><code>4. 数组初始化以及匿名数组  
+正常初始化：` int[] a = new int[100]; `  
+简化初始化：` int[] small = &#123;2,3,4,5,6,7&#125;; `  
+匿名数组： ` new int[] = &#123;17, 18, 19&#125;; `  
+可以在不创建新变量的情况下重新初始化一个数组：` small = new int[] &#123;17, 18, 19&#125;; `
+上一行等价于  
+` int[] anonym = &#123;17, 18, 19&#125;; `   
+` small = anonym; `
+5. Java中允许将一个数组变量拷贝到另一个数组变量。这样两个变量将引用同一个数组。
+` int[] l = small; `
+6. Java不能使用数组名+1得到下一个数组元素。 
+</code></pre>
+</blockquote>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://coconut443.github.io/2021/06/14/C5_%E7%BB%A7%E6%89%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lito">
+      <meta itemprop="description" content="。。。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lito的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/14/C5_%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-14 22:07:04" itemprop="dateCreated datePublished" datetime="2021-06-14T22:07:04+08:00">2021-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-05 10:23:31" itemprop="dateModified" datetime="2021-06-05T10:23:31+08:00">2021-06-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="第五章-继承"><a href="#第五章-继承" class="headerlink" title="第五章 继承"></a>第五章 继承</h1><blockquote>
+<h2 id="5-1-类、超类和子类。"><a href="#5-1-类、超类和子类。" class="headerlink" title="5.1 类、超类和子类。"></a>5.1 类、超类和子类。</h2><ul>
+<li>已存在的类称为超类（superclass）、基类或父类。新类称为子类（subclass）、派生类或孩子类。</li>
+<li>覆盖方法：超类中的方法对于子类并不适用时，需要提供新方法覆盖（override）超类中的方法。</li>
+<li>子类不能直接访问超类的私有域。需要借助超类的公有方法来访问，但是要用<code>super.method()</code>。</li>
+<li>super：super只是一个关键字。不是类似于this的东西，因为super不是对象的引用，不能赋给一个对象变量。其有两个用途：1 调用超类方法。 2 调用超类构造器。</li>
+<li>多态：一个对象变量可以指示多种实际类型的现象叫做多态。在运行时能够自动选择调用哪个方法的现象叫做动态绑定。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args)</span><br><span class="line">&#123;</span><br><span class="line">    Manager boss = new Manager(&quot;Hank&quot;, 8000, 2021, 2, 2);</span><br><span class="line">    boss.setBonus(5000);</span><br><span class="line"></span><br><span class="line">    Employee[] staff = new Employee[3];</span><br><span class="line">    staff[0] = boss;</span><br><span class="line">    staff[1] = new Employee(&quot;Haryy&quot;, 7000, 2021, 2,3);</span><br><span class="line">    staff[2] = new Employee(&quot;Tony&quot;, 7000, 2021, 2,4);</span><br><span class="line">    </span><br><span class="line">    // 这里Employee e既可是employee，也可是manager，虚拟机根据类型正确调用方法。</span><br><span class="line">    for (Employee e : staff)</span><br><span class="line">        System.out.println(e.getName() +  &quot; &quot; + e.getSalary());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>置换法则：程序中出现超类对象的任何地方都可以用子类对象置换。</li>
+<li>多态：在Java中对象变量是多态的。一个Employee变量既可以引用一个Employee对象，也可以引用一个Employee类的任何一个子类的对象。</li>
+<li>如果在子类中定义了一个与超类签名相同的方法，那么子类中的方法就覆盖了超类中的方法。</li>
+<li>理解方法调用过程。p155</li>
+<li>在覆盖一个方法时，子类方法不能低于超类方法的可见性。  </li>
+<li>使用final修饰符可以定义某一类为不允许扩展。类中的某个方法也可以被声明为final，表示子类不能覆盖这个方法。如果将一个类声明为final，那么只有其中的方法自动成为final，而不包括域。<br><code>public final class Executive extends Manager</code></li>
+<li>将一个子类的引用赋给一个超类变量，编译器是允许的。将一个超类的引用赋给一个子类变量，必须进行类型转换。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 这样可以  </span><br><span class="line">Manager boss = new Manager();</span><br><span class="line">Employee em = boss;</span><br><span class="line">// 这样不行 </span><br><span class="line">Employee em = new Employee()</span><br><span class="line">Manager boss = em;</span><br><span class="line"></span><br><span class="line">// 在继承链上进行向下的类型转换，并且谎报关于对象包含的内容，em不是manager引用</span><br><span class="line">Manager boss = (Manager) em; // error ClassCastException</span><br><span class="line">// 但下面这个是对的。因为超类可以引用子类对象，而staff[0]本来就引用manager对象</span><br><span class="line">Manager boss = (Manager) staff[0];</span><br><span class="line"></span><br><span class="line">// 建议使用</span><br><span class="line">if (staff[1] instanceof Manager)</span><br><span class="line">&#123;</span><br><span class="line">    boss = (Manager) staff[1];</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>只能在继承层次内进行类型转换。</li>
+<li>将超类转换成子类之前，应该使用instanceof进行检查。</li>
+</ul>
+</blockquote>
+<blockquote>
+<hr>
+<h2 id="5-2-Object：所有类的超类"><a href="#5-2-Object：所有类的超类" class="headerlink" title="5.2 Object：所有类的超类"></a>5.2 Object：所有类的超类</h2><ul>
+<li>为避免发生类型错误，可使用@Override对覆盖超类的方法进行标记</li>
+<li><code>@Override public boolean  (Object otherObject)</code></li>
+<li>这样可以避免这样的错误(会报错)：<br><code>@override public boolean equals(Employee other)</code></li>
+<li>hashCode方法定义在Object中，每个对象都有一个默认的hashcode，其值为对象的存储地址。</li>
+<li>string 类型有自己的hashcode计算方法，相当于覆盖了object的hashcode</li>
+<li>如果重新定义equals方法，就必须重新定义hashCode方法。</li>
+<li>使用null安全的 <code>Objects.hashCode()</code> 方法获得对象的hashcode，对于基本类型例如double可以使用 <code>Double.hashCode()</code> 。</li>
+<li>如果需要组合多个散列值时，使用 <code>Objects.hash()</code> 并提供多个参数。</li>
+<li>Equals和hashCode的定义必须一致。如果 <code>x.equals(y)</code> 返回true，那么 <code>x.hashCode()</code> 的值也必须与y的hashCode一致。</li>
+<li>例如：如果equals比较的是店员的ID，那么hashcode方法需要hash雇员的ID。</li>
+<li>toString方法：x.toString() 可以用 +x 替代。这条语句将一个空串与x的字符串表示相连接。 如果x是基本类型，这条语句照样能够执行。</li>
+<li>Object定义了toString方法，用来输出对象所属的类名和散列码。而数组继承了object的toString方法，所以如果直接把数组变成string，会输出类型和散列吗。可以调用 <code>Arrays.toString()</code> </li>
+<li>强烈建议为自定义的每一个类增加toString()方法，这样可以随时查看状态。</li>
+</ul>
+<hr>
+<h2 id="5-3-泛型数组列表"><a href="#5-3-泛型数组列表" class="headerlink" title="5.3 泛型数组列表"></a>5.3 泛型数组列表</h2><ul>
+<li>ArrayList：是一个采用<em>类型参数</em>的<em>泛型类</em>。</li>
+<li>如果有两个ArrayList类型的a和b， 那么a=b是让a和b引用同一个数组列表。</li>
+<li>使用以下这个技巧可以方便访问数组元素<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;X&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">while(..)</span><br><span class="line">&#123;</span><br><span class="line">    x = ...;</span><br><span class="line">    list.add(x); </span><br><span class="line">&#125;</span><br><span class="line">X[] a = new X[list.size()];</span><br><span class="line">list.toArray(a);</span><br></pre></td></tr></table></figure></li>
+<li>书中p183提到了类型化的ArrayList和原始数组列表的兼容性问题，这里暂时不研究。</li>
+</ul>
+<hr>
+<h2 id="5-4-对象包装器与自动装箱"><a href="#5-4-对象包装器与自动装箱" class="headerlink" title="5.4 对象包装器与自动装箱"></a>5.4 对象包装器与自动装箱</h2><ul>
+<li>包装器：Integer，Long，Double 等。</li>
+<li>包装器特点：对象包装器类不可以变，一旦构造了包装器，不能更改其中的值，并且是final，不能定义子类。  </li>
+<li><code>ArrayList&lt;Integer&gt;</code> 有自动装箱特性，对它的很多操作可以看成直接对int操作。</li>
+</ul>
+<hr>
+<h2 id="5-5-参数数量可变的方法"><a href="#5-5-参数数量可变的方法" class="headerlink" title="5.5 参数数量可变的方法"></a>5.5 参数数量可变的方法</h2><ul>
+<li><code> public PrintStream printf(String fmt, Object... args) &#123; return format(fmt, args); &#125;</code></li>
+<li>…是java代码的一部分，表示可以接受任意数量的对象。起始可以看作是一个Object[]数组。<h2 id="5-7-反射"><a href="#5-7-反射" class="headerlink" title="5.7 反射"></a>5.7 反射</h2></li>
+<li>反射：能够分析类能力的程序称为反射。</li>
+<li>反射机制可以用来：</li>
+<li>在运行时分析类的能力。</li>
+<li>在运行时查看对象。</li>
+<li>实现通用的数组操作代码。</li>
+<li>利用Method对象，这个对象很像C++中的函数指针。</li>
+<li>Class类：程序运行期间，Java为所有对象维护一个被称为运行时的类型标识。可以通过Class类来访问这些信息。</li>
+<li>Class类实际是一个泛型类。Employee.class的类型是Class&lt;Employee&gt;</li>
+<li>可以使用==运算符实现两个类对象比较。 <code>if(e.getClass() == Employee.class)</code></li>
+<li>可以使用nweInstance()动态创建一个类的实例。</li>
+<li><code>e.getClass().newInstance();</code> 创建一个与e具有相同类类型的实例。</li>
+<li>异常类型：未检查异常和已检查异常。对于已检查异常，编译器将会检查是否提供了处理器。</li>
+</ul>
+<hr>
+<h2 id="5-8-继承的设计技巧"><a href="#5-8-继承的设计技巧" class="headerlink" title="5.8 继承的设计技巧"></a>5.8 继承的设计技巧</h2><ul>
+<li>将公共操作和域放在超类。</li>
+<li>不要使用受保护的域。</li>
+<li>使用继承实现“is a“关系。</li>
+<li>除非所有继承的方法都有意义，否则不要使用继承。</li>
+<li>在覆盖方法时，不要改变预期的行为。在覆盖子类中的方法时，不要偏离最初的设计想法。</li>
+<li>使用多态，而非类型信息。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (x is oftype1)</span><br><span class="line">    action1(x);</span><br><span class="line">else if (x is oftype2)</span><br><span class="line">    action2(x);</span><br></pre></td></tr></table></figure></li>
+<li>遇到以上代码应该考虑使用多态性。action1和action2如果是相同的概念，就应该为这个概念定义一个方法，将其放在两个类的超类或接口中。</li>
+<li>不要过多地使用反射。</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://coconut443.github.io/2021/06/13/%E5%B0%91%E6%9C%89%E4%BA%BA%E8%B5%B0%E7%9A%84%E8%B7%AF%EF%BC%88%E5%BF%83%E7%90%86%E7%B1%BB%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -172,10 +647,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-13 22:48:30 / Modified: 22:48:13" itemprop="dateCreated datePublished" datetime="2021-06-13T22:48:30+08:00">2021-06-13</time>
+              <time title="Created: 2021-06-13 22:48:30" itemprop="dateCreated datePublished" datetime="2021-06-13T22:48:30+08:00">2021-06-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-14 22:05:47" itemprop="dateModified" datetime="2021-06-14T22:05:47+08:00">2021-06-14</time>
+              </span>
 
           
 
@@ -189,8 +670,9 @@
 
       
           <h1 id="少有人走的路——心智成熟的道路"><a href="#少有人走的路——心智成熟的道路" class="headerlink" title="少有人走的路——心智成熟的道路"></a>少有人走的路——心智成熟的道路</h1><blockquote>
-<h2 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h2><pre><code>  这本书的前半部分我个人认为写的很透彻，指明了我内心不敢面对的东西，走向心智成熟，面对自己，对自己负责，给自己自由，自己才能长大。后半部分有些玄学化，逐渐开始探讨一些虚无的东西，如一些巧合的发生，梦境的重现，幸运地躲过灾祸之类。或许是作者层次更高了看到很多自己无法解释的东西，所以用比较玄幻的方式给出一种可能的解释。
-</code></pre>
+<h2 id="个人评价"><a href="#个人评价" class="headerlink" title="个人评价"></a>个人评价</h2><ul>
+<li>这本书的前半部分我个人认为写的很透彻，指明了我内心不敢面对的东西，走向心智成熟，面对自己，对自己负责，给自己自由，自己才能长大。后半部分有些玄学化，逐渐开始探讨一些虚无的东西，如一些巧合的发生，梦境的重现，幸运地躲过灾祸之类。或许是作者层次更高了看到很多自己无法解释的东西，所以用比较玄幻的方式给出一种可能的解释。</li>
+</ul>
 <hr>
 <h2 id="初读"><a href="#初读" class="headerlink" title="初读"></a>初读</h2><ul>
 <li><strong>人生是艰难的，苦难重重</strong>  </li>
@@ -220,8 +702,9 @@
 <li>我们有权力选择自己要做的事，一件事做不了不应该怪罪到制度、或者他人身上</li>
 </ul>
 <hr>
-<pre><code>  许多人看心理医生都面临一个共同问题，感觉自己不能对付或者改变现状，因此产生恐惧、无助和自我怀疑。多数人力不从心的根源在于他们想逃避自由，不能为他们的问题，他们的生活承担责任。他们感到乏力，在于他们放弃了自己的力量。如果得到治疗，就会意识到，作为成年人，整个一生都充满选择和决定的机会。他们接受这一事实，就会变成一个自由的人。无法接受这种事实，永远都会感觉到自己是个牺牲品。
-</code></pre>
+<ul>
+<li>许多人看心理医生都面临一个共同问题，感觉自己不能对付或者改变现状，因此产生恐惧、无助和自我怀疑。多数人力不从心的根源在于他们想逃避自由，不能为他们的问题，他们的生活承担责任。他们感到乏力，在于他们放弃了自己的力量。如果得到治疗，就会意识到，作为成年人，整个一生都充满选择和决定的机会。他们接受这一事实，就会变成一个自由的人。无法接受这种事实，永远都会感觉到自己是个牺牲品。</li>
+</ul>
 <hr>
 <h3 id="尊重事实"><a href="#尊重事实" class="headerlink" title="尊重事实"></a>尊重事实</h3><ul>
 <li>越是了解事实，处理问题越是得心应手 终身获取新信息新知识，不断绘制人生的地图</li>
@@ -239,9 +722,18 @@
 </ul>
 <hr>
 <h2 id="什么是爱"><a href="#什么是爱" class="headerlink" title="什么是爱"></a>什么是爱</h2><ul>
-<li>待补充</li>
+<li>我认为 浅显的认为 首先爱的定义要对 个人（自己）以及对他人都生效 既要爱自己 也要爱他人 那么简单的理解就是珍视 自己 珍视他人 自己和某个人对自己的重要性高 自己愿意为之付出很多的叫做爱，作者认为爱是让双方心智成熟</li>
+<li>坚持做难而正确的事</li>
+<li>fall in love is not love <strong>坠入情网不是爱</strong></li>
+<li>我的问题：</li>
+<li>我自认为不配得到很好的东西，我经常想和有缺陷的人交往，我认为自己比较适合和有缺陷的人交往，感觉自己和这样的人在一起共同克服缺陷，但我似乎没想过和没有缺陷的人交往，<br>和看上去很不错的人交往，我感觉我自己配不上，但是我应该提升自己，让自己逐渐变得更好能够和他们交往。</li>
+<li>我常常不愿面对现实，不愿面对挑战，认为独立、面对挑战、去爱别人是一件很难的事情。这样不对，我应该学着去改变。</li>
+<li>我是否对自己的价值深深地怀疑 是否不顾一切地寻求他人的爱，甚至到了不择手段的地步，为了维系同别人的感情关系，宁愿牺牲独立和自由</li>
+<li>不肯为个人成长负责，宁愿牺牲最亲近的人的感受</li>
+<li>只想获取却不愿意付出，心智就会永远停留在婴儿时期</li>
 </ul>
 <hr>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><h3 id="日复一日，年复一年，心智成熟"><a href="#日复一日，年复一年，心智成熟" class="headerlink" title="日复一日，年复一年，心智成熟"></a><strong>日复一日，年复一年，心智成熟</strong></h3><p><em>Written By Wyh 2021.6.14</em> </p>
 </blockquote>
 
       
@@ -305,70 +797,6 @@
 <li>好书推荐《少有人走的路》</li>
 </ul>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://coconut443.github.io/2021/05/29/C5_%E7%BB%A7%E6%89%BF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Lito">
-      <meta itemprop="description" content="。。。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lito的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/29/C5_%E7%BB%A7%E6%89%BF/" class="post-title-link" itemprop="url">Untitled</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-05-29 09:44:54" itemprop="dateCreated datePublished" datetime="2021-05-29T09:44:54+08:00">2021-05-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-26 13:53:50" itemprop="dateModified" datetime="2021-05-26T13:53:50+08:00">2021-05-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
       
     </div>
 
@@ -449,7 +877,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
